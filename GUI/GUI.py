@@ -9,8 +9,8 @@ model = load_model("model.h5")
 webcam = cv2.VideoCapture(0)
 haar_file = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
 face_cascade = cv2.CascadeClassifier(haar_file)
-labels = {0: 'angry', 1: 'disgust', 2: 'fear', 3: 'happy', 4: 'neutral', 5: 'sad', 6: 'surprise'}
-#webcam = cv2.VideoCapture(0)
+labels = {0: 'Angry', 1: 'Disgust', 2: 'Fear', 3: 'Happy', 4: 'Neutral', 5: 'Sad', 6: 'Surprise'}
+
 def extract_features(real_image):
     feature = np.array(real_image)
     feature = feature.reshape(1, 48, 48, 1)
@@ -40,32 +40,24 @@ def EmotionRecoginization():
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(525, 525)
+        MainWindow.resize(600, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(50, 380, 161, 51))
+        self.pushButton.setGeometry(QtCore.QRect(80, 470, 161, 51))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.startCamera)
         
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(320, 380, 161, 51))
+        self.pushButton_2.setGeometry(QtCore.QRect(370, 470, 161, 51))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_2.clicked.connect(self.stopCamera)
 
-        
-
-
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(90, 70, 350, 300)
-        
-            
-            
-
-
+        self.image_label.setGeometry(80, 70, 450, 370)
         
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(120, 30, 291, 21))
+        self.label.setGeometry(QtCore.QRect(160, 30, 291, 21))
         
         font = QtGui.QFont()
         font.setPointSize(14)
